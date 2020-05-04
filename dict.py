@@ -11,5 +11,11 @@ file.close()
 
 apiRequest += (searchWord + "?key=" + apiKey)
 
-r = requests.get(apiRequest)
-print(r.text)
+req = requests.get(apiRequest)
+jsonData = req.json()
+
+shortDef = jsonData[0]['shortdef'][0]
+descriptor = jsonData[0]['fl']
+
+
+print('<' + searchWord + ' (' + descriptor + ')>\n'+ shortDef)
